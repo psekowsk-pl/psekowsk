@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Piotr Sękowski — Portfolio</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --text: #e6edf3;
+      --accent: #58a6ff;
+      --card-bg: #161b22;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 1rem 2rem;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    header p {
+      color: #8b949e;
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    .profile-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      margin-bottom: 1rem;
+      animation: fadeIn 1s ease forwards;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .profile-photo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+
+    .socials {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .socials a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      color: var(--accent);
+      font-size: 1.4rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .socials a:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-4px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    section:nth-child(2) { animation-delay: 0.2s; }
+    section:nth-child(3) { animation-delay: 0.4s; }
+
+    h2 {
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+    }
+
+    hr {
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .job {
+      background: var(--card-bg);
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .job:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    }
+
+    .job h3 {
+      margin: 0;
+      font-size: 1.3rem;
+    }
+
+    .job p {
+      margin: 0.4rem 0;
+      color: #c9d1d9;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tech-item {
+      background: var(--card-bg);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      color: var(--accent);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: background 0.2s;
+    }
+
+    .tech-item:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .timeline {
+      position: relative;
+      margin: 2rem 0;
+      padding-left: 30px;
+      border-left: 2px solid var(--accent);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -39px;
+      top: 50%;
+      width: 16px;
+      height: 16px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    .timeline-content {
+      background: var(--card-bg);
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .timeline-content:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(88,166,255,0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(88,166,255,0); }
+      100% { box-shadow: 0 0 0 0 rgba(88,166,255,0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #8b949e;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      .socials a { width: 40px; height: 40px; font-size: 1.2rem; }
+    }
+  </style>
+
+  <!-- Ikony Font Awesome -->
+  <script src="https://kit.fontawesome.com/a2e0e6e6ee.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <img src="images/profilowe.jpg" alt="Moje zdjęcie" class="profile-photo">
+    <h1>Piotr Sękowski</h1>
+    <p>QA Automation Engineer ● Programmer ● ISTQB Certified Tester (Foundation Level)</p>
+    <div class="socials">
+      <a href="https://github.com/psekowsk-pl" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/piotr-s-a697b4187/" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Doświadczenie</h2>
+    
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Capgemini</h3>
+            <p><strong>Stanowisko:</strong> Internship - QA/Test Automation</p>
+            <p><strong>Okres:</strong> lis 2021 – gru 2021</p>
+            <p>Staż - nauka w praktyce technologii SQL, C#, Selenium i Specflow.</p>
+            <div class="tech-list">
+              <div class="tech-item">C#</div>
+              <div class="tech-item">Selenium</div>
+              <div class="tech-item">SpecFlow</div>
+              <div class="tech-item">SQL</div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <p><strong>Stanowisko:</strong> Junior Test Automation Engineer</p>
+            <p><strong>Okres:</strong> sty 2022 – gru 2022</p>
+            <p><strong>Opis:</strong> Projektowanie (aplikacja webowa):</p>
+            <ul>
+              <li> testów E2E</li>
+              <li> Smoke testów </li>
+              <li> testów jednostkowych</li>
+              <li> testów integracyjnych</li>
+              <li> testów negatywnych</li>
+              <li> testów wydajnościowych</li>
+            </ul>
+            <div class="tech-list">
+              <div class="tech-item">C#</div>
+              <div class="tech-item">Selenium</div>
+              <div class="tech-item">SpecFlow</div>
+              <div class="tech-item">SQL</div>
+              <div class="tech-item">Swagger</div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <p><strong>Stanowisko:</strong> Test Automation Engineer</p>
+            <p><strong>Okres:</strong> sty 2023 – lis 2024</p>
+            <p><strong>Opis:</strong> Projektowanie (aplikacje webowe i mobilne):</p>
+            <ul>
+              <li> testów E2E</li>
+              <li> Smoke testów </li>
+              <li> testów jednostkowych</li>
+              <li> testów integracyjnych</li>
+              <li> testów negatywnych</li>
+              <li> testów wydajnościowych</li>
+            </ul>
+            <div class="tech-list">
+              <div class="tech-item">C#</div>
+              <div class="tech-item">Selenium</div>
+              <div class="tech-item">xUnit</div>
+              <div class="tech-item">Cucumber</div>
+              <div class="tech-item">SpecFlow</div>
+              <div class="tech-item">Reqnroll</div>
+              <div class="tech-item">SQL</div>
+              <div class="tech-item">Swagger</div>
+              <div class="tech-item">Postman</div>
+              <div class="tech-item">REST API</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>EWL Group</h3>
+            <p><strong>Stanowisko:</strong> Automation Tester</p>
+            <p><strong>Okres:</strong> gru 2024 – lis 2025</p>
+            <p><strong>Opis:</strong> Projektowanie (aplikacja webowa i zapytania API):</p>
+            <ul>
+              <li> testów E2E</li>
+              <li> Smoke testów </li>
+              <li> testów jednostkowych</li>
+              <li> testów negatywnych</li>
+            </ul>
+            <div class="tech-list">
+              <div class="tech-item">C#</div>
+              <div class="tech-item">TypeScript</div>
+              <div class="tech-item">Playwright</div>
+              <div class="tech-item">xUnit</div>
+              <div class="tech-item">SQL</div>
+              <div class="tech-item">Swagger</div>
+              <div class="tech-item">REST API</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 id="gamedev">Tworzę gry w:</h2>
+      <div class="tech-list">
+        <div class="tech-item">Unreal Engine 4</div>
+        <div class="tech-item">Unreal Engine 5</div>
+        <div class="tech-item">Unity</div>
+        <div class="tech-item">Flax Engine</div>
+      </div>
+      <h2 id="programming-languages">Korzystam z języków:</h2>
+      <div class="tech-list">
+        <div class="tech-item">C#</div>
+	      <div class="tech-item">C++</div>
+        <div class="tech-item">TypeScript</div>
+        <div class="tech-item">SQL</div>
+      </div>
+      <h2 id="technologies">Wykorzystuję technologie:</h2>
+      <div class="tech-list">
+        <div class="tech-item">REST API</div>
+        <div class="tech-item">Git</div>
+        <div class="tech-item">Selenium</div>
+        <div class="tech-item">Appium</div>
+        <div class="tech-item">Playwright</div>
+        <div class="tech-item">xUnit</div>
+        <div class="tech-item">Cucumber</div>
+        <div class="tech-item">Azure</div>
+        <div class="tech-item">AWS</div>
+        <div class="tech-item">JIRA</div>
+        <div class="tech-item">SpecFlow</div>
+        <div class="tech-item">Reqnroll</div>
+        <div class="tech-item">Postman</div>
+        <div class="tech-item">Tosca</div>
+        <div class="tech-item">Swagger</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 - Piotr Sękowski
+  </footer>
+</body>
+</html>
